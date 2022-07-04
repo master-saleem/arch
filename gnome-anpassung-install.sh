@@ -228,6 +228,7 @@ list_aur=(
     humanity-icon-theme
     yaru-gnome-shell-theme
     yaru-colors-gtk-theme-git
+    gnome-shell-extension-system-monitor-git
 )
 
 count=0
@@ -248,7 +249,6 @@ echo "*******************************************************************"
 echo " Liste of YAY software "
 echo "*******************************************************************"
 list_yay=(
-gnome-shell-extension-system-monitor-git
 ulauncher
 gnome-terminal-transparency
 )
