@@ -142,6 +142,40 @@ echo "*******************************************************************"
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Function ( CleanUP )
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+func_cleanup() {
+tput sgr0
+echo "*******************************************************************"
+echo "CleanUP on " $HOSTNAME
+echo "*******************************************************************"
+    sudo pacman -Rns $(pacman -Qtdq)
+
+    # Flatpak unbenutzte Runtimes löschen
+    sudo flatpak uninstall --unused -y
+
+    # Removes old revisions of snaps
+    # CLOSE ALL SNAPS BEFORE RUNNING THIS
+    LANG=C snap list --all | while read snapname ver rev trk pub notes; do if [[ $notes = *disabled* ]]; then sudo snap remove "$snapname" --revision="$rev"; fi; done
+
+    # Starting from snap 2.34 and later, you can set the maximum number of a snap’s revisions stored by the system by setting a refresh.retain option
+    sudo snap set system refresh.retain=2
+
+    sudo du -sh /var/lib/snapd/cache/         # Get used space
+    sudo rm  --force /var/lib/snapd/cache/*   # Remove cache
+
+    sudo rm -R /home/admin/.cache/*
+    sudo rm -R /tmp/*
+    sudo du -sh ~/.cache/
+    sudo rm -rf ~/.cache/*
+
+    sudo pacman -Scc --noconfirm
+    sudo yaourt -Scc --noconfirm
+    sudo yay -Scc --noconfirm
+}
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 ############ +++++++ ######## ++++++++++++++ ############ +++++++ ########
 ##### END ###### END ######## +++FUNKTION+++ ##### END ###### END ########
 ############ +++++++ ######## ++++++++++++++ ############ +++++++ ########
@@ -211,8 +245,8 @@ done
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 tput sgr0
-yay --noconfirm -Scc
-sudo pacman --noconfirm -Scc
+
+func_cleanup
 
 tput sgr0
 tput setaf 1
