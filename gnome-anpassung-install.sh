@@ -246,6 +246,7 @@ echo " Liste of YAY software "
 echo "*******************************************************************"
 list_yay=(
 gnome-system-monitor
+ulauncher
 )
 
 count=0
