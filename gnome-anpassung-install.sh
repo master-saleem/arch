@@ -249,7 +249,7 @@ echo "*******************************************************************"
 echo " Liste of YAY software "
 echo "*******************************************************************"
 list_yay=(
-gnome-system-monitor
+gnome-shell-extension-system-monitor-git
 ulauncher
 gnome-terminal-transparency
 )
