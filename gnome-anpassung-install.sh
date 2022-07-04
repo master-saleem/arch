@@ -224,8 +224,7 @@ list_aur=(
     gnome-shell-extension-tray-icons-reloaded-git
     gnome-shell-extension-tweaks-system-menu-git
     gnome-shell-extension-arch-update
-    sound-percentage-gs-extension
-    gnome-shell-battery-time-percentage-compact
+    gnome-shell-extension-battery-status-git
     humanity-icon-theme
     yaru-gnome-shell-theme
     yaru-colors-gtk-theme-git
@@ -288,6 +287,9 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
 # Sane settings for gedit"
 gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
+
+# compression-level
+dconf write /org/gnome/file-roller/general/compression-level "'maximum'"
 
 func_cleanup
 
