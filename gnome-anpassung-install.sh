@@ -196,6 +196,7 @@ make
 libgtop
 networkmanager
 clutter
+papirus-icon-theme
 )
 
 count=0
@@ -225,6 +226,9 @@ list_aur=(
     gnome-shell-extension-arch-update
     sound-percentage-gs-extension
     gnome-shell-battery-time-percentage-compact
+    humanity-icon-theme
+    yaru-gnome-shell-theme
+    yaru-colors-gtk-theme-git
 )
 
 count=0
@@ -259,6 +263,9 @@ done
 
 tput sgr0
 
+gsettings set org.gnome.desktop.interface gtk-theme "Yaru-dark"
+gsettings set org.gnome.desktop.wm.preferences theme "Yaru-dark"
+gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
 func_cleanup
 
 tput sgr0
