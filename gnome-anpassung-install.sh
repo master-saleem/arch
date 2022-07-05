@@ -252,6 +252,8 @@ echo "*******************************************************************"
 list_yay=(
 ulauncher
 gnome-terminal-transparency
+nautilus-admin-git
+nautilus-copy-path
 )
 
 count=0
