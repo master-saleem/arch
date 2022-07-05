@@ -197,6 +197,7 @@ libgtop
 networkmanager
 clutter
 papirus-icon-theme
+neofetch
 )
 
 count=0
