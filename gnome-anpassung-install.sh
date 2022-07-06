@@ -198,6 +198,10 @@ networkmanager
 clutter
 papirus-icon-theme
 neofetch
+nautilus-admin
+gnome-tweak-tool
+baobab
+nano
 )
 
 count=0
@@ -230,6 +234,7 @@ list_aur=(
     yaru-gnome-shell-theme
     yaru-colors-gtk-theme-git
     gnome-shell-extension-system-monitor-git
+    gnome-shell-extension-tray-icons-reloaded-git
 )
 
 count=0
