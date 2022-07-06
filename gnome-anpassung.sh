@@ -262,7 +262,7 @@ list_paru=(
     chrome-gnome-shell
     gnome-shell-extension-dash-to-panel-git
     gnome-shell-extension-caffeine-git
-    gnome-shell-extension-sound-output-device-chooser-git
+    gnome-shell-extension-sound-output-device-chooser
     gnome-shell-extension-tray-icons-reloaded-git
     gnome-shell-extension-tweaks-system-menu-git
     gnome-shell-extension-arch-update
