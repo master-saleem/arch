@@ -137,7 +137,7 @@ tput sgr0
 echo "*******************************************************************"
 echo "Install mit paru "${1}
 echo "*******************************************************************"
-   sudo paru -S --noconfirm --needed $1
+   paru -S --noconfirm --needed $1
 }
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -186,6 +186,7 @@ echo "*******************************************************************"
     sudo pacman -Scc --noconfirm
     sudo yaourt -Scc --noconfirm
     sudo yay -Scc --noconfirm
+    sudo paru -Scc --noconfirm
 }
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -237,7 +238,7 @@ echo "*******************************************************************"
 list_aur=(
     humanity-icon-theme
     yaru-gnome-shell-theme
-    yaru-colors-gtk-theme-git
+    yaru-gtk-theme
 )
 
 count=0
