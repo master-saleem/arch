@@ -13,7 +13,7 @@ echo '              -+oooooo+:'
 echo '            `/:-:++oooo+:'
 echo '           `/++++/+++++++:'
 echo '          `/++++++++++++++:'
-echo '        `/+++ooooooooooooo/`'
+echo '         `/+++ooooooooooooo/`'
 echo '        ./ooosssso++osssssso+`'
 echo '       .oossssso-````/ossssss+`'
 echo '      -osssssso.      :ssssssso.'
@@ -55,7 +55,7 @@ tput sgr0
 echo "*******************************************************************"
 echo "Backup package_list from "$HOSTNAME
 echo "*******************************************************************"
-   sudo pacman -Qe | awk '{print $1}' > $HOME/$(date +%d-%m-%Y_%H_%M_%S)-package-list.txt
+   sudo pacman -Qe | awk '{print $1}' > "$HOME/$(date +%d-%m-%Y_%H_%M_%S)-package-list.txt"
 }
 func_backup_package_list
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -80,14 +80,14 @@ func_install_or_not() {
      tput setaf 1
      echo "--------------------------------------------------------------"
      tput setaf 2
-     echo " The package "$1" is already installed"
+     echo " The package ""$1"" is already installed"
    # tput sgr0
  else
      tput sgr0
      tput setaf 1
      echo "--------------------------------------------------------------"
      tput setaf 3
-     echo " Installing "$2" package "$1
+     echo " Installing ""$2"" package "$1
     tput sgr0
      $2 $1
  fi
@@ -116,12 +116,12 @@ tput sgr0
 echo "*******************************************************************"
 echo "Install aus dem AUR "${1}
 echo "*******************************************************************"
-  cd /tmp
+  cd /tmp || exit
   sudo rm -rf "${1}"
   # Скачивание исходников.
   git clone https://aur.archlinux.org/"${1}".git
   # Переход в "${1}".
-  cd "${1}"
+  cd "${1}" || exit
   makepkg -s --noconfirm
   sudo pacman -U --noconfirm --needed ./*.pkg.tar.*
   cd ..
@@ -150,7 +150,7 @@ tput sgr0
 echo "*******************************************************************"
 echo "CleanUP on " $HOSTNAME
 echo "*******************************************************************"
-    sudo pacman -Rns $(pacman -Qtdq)
+    sudo pacman -Rns "$(pacman -Qtdq)"
 
     # Flatpak unbenutzte Runtimes löschen
     sudo flatpak uninstall --unused -y

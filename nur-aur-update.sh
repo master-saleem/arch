@@ -55,7 +55,7 @@ tput sgr0
 echo "*******************************************************************"
 echo "Backup package_list from "$HOSTNAME
 echo "*******************************************************************"
-   sudo pacman -Qe | awk '{print $1}' > $HOME/$(date +%d-%m-%Y_%H_%M_%S)-package-list.txt
+   sudo pacman -Qe | awk '{print $1}' > "$HOME/$(date +%d-%m-%Y_%H_%M_%S)-package-list.txt"
 }
 func_backup_package_list
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -83,7 +83,7 @@ tput sgr0
 echo "*******************************************************************"
 echo "CleanUP on " $HOSTNAME
 echo "*******************************************************************"
-    sudo pacman -Rns $(pacman -Qtdq)
+    sudo pacman -Rns "$(pacman -Qtdq)"
 
     # Flatpak unbenutzte Runtimes löschen
     sudo flatpak uninstall --unused -y
