@@ -130,6 +130,19 @@ echo "*******************************************************************"
 
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Function ( install mit paru )
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+func_install_paru() {
+tput sgr0
+echo "*******************************************************************"
+echo "Install mit paru "${1}
+echo "*******************************************************************"
+   sudo paru -S --noconfirm --needed $1
+}
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Function ( install mit YAY )
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 func_install_yay() {
@@ -198,7 +211,7 @@ networkmanager
 clutter
 papirus-icon-theme
 neofetch
-nautilus-admin
+nautilus-admin-git
 gnome-tweak-tool
 baobab
 nano
@@ -222,6 +235,29 @@ echo "*******************************************************************"
 echo " Liste of AUR software "
 echo "*******************************************************************"
 list_aur=(
+    humanity-icon-theme
+    yaru-gnome-shell-theme
+    yaru-colors-gtk-theme-git
+)
+
+count=0
+
+for name in "${list_aur[@]}" ; do
+    count=$[count+1]
+    func_install_or_not $name func_install_aur
+done
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+tput sgr0
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Liste of paru software
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+tput sgr0
+echo "*******************************************************************"
+echo " Liste of paru software "
+echo "*******************************************************************"
+list_paru=(
     chrome-gnome-shell
     gnome-shell-extension-dash-to-panel-git
     gnome-shell-extension-caffeine-git
@@ -230,18 +266,15 @@ list_aur=(
     gnome-shell-extension-tweaks-system-menu-git
     gnome-shell-extension-arch-update
     gnome-shell-extension-battery-status-git
-    humanity-icon-theme
-    yaru-gnome-shell-theme
-    yaru-colors-gtk-theme-git
     gnome-shell-extension-system-monitor-git
     gnome-shell-extension-tray-icons-reloaded-git
 )
 
 count=0
 
-for name in "${list_aur[@]}" ; do
+for name in "${list_paru[@]}" ; do
     count=$[count+1]
-    func_install_or_not $name func_install_aur
+    func_install_or_not $name func_install_paru
 done
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 tput sgr0
